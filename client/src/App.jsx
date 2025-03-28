@@ -1,7 +1,10 @@
 import "./App.css";
+import SearchPage from "./component/SearchPage";
 
 function App() {
-  return <div className="App">{/* Start coding here */}</div>;
+  return <>
+  <SearchPage/>
+  </>;
 }
 
 export default App;
