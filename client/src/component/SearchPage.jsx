@@ -24,20 +24,21 @@ function SearchPage() {
   };
 
   const copyToClipboard = (text) => {
-    console.log('text', text)
-    var textField = document.createElement('textarea')
-    textField.innerText = text
-    document.body.appendChild(textField)
-    textField.select()
-    document.execCommand('copy')
-    textField.remove()
-  }
+    console.log("text", text);
+    var textField = document.createElement("textarea");
+    textField.innerText = text;
+    document.body.appendChild(textField);
+    textField.select();
+    document.execCommand("copy");
+    textField.remove();
+  };
 
-  
   return (
     <>
       <div className="flex flex-col px-4 sm:px-8 md:px-16">
-        <h1 className="text-4xl text-blue-400 text-center font-bold  pt-10 ">เที่ยวไหนดี</h1>
+        <h1 className="text-4xl text-blue-400 text-center font-bold  pt-10 ">
+          เที่ยวไหนดี
+        </h1>
         <div>
           <label className="flex flex-col xl:px-120 font-semibold pt-4">
             ค้นหาที่เที่ยว
@@ -45,7 +46,7 @@ function SearchPage() {
               className="border-b w-full py-2 px-3 mt-2 text-center "
               type="text"
               value={searchText}
-              placeholder ="หาที่เที่ยวแล้วไปกัน..."
+              placeholder="หาที่เที่ยวแล้วไปกัน..."
               onChange={(e) => setSearchText(e.target.value)}
             ></input>
           </label>
@@ -88,7 +89,7 @@ function SearchPage() {
                       return (
                         <span
                           key={index}
-                          onClick={() => setSearchText(`${newTags.join("")} `) }
+                          onClick={() => setSearchText(`${newTags.join("")} `)}
                           className="cursor-pointer underline"
                         >
                           {tag}
@@ -100,20 +101,19 @@ function SearchPage() {
                   <div className="flex flex-row gap-8 mt-4 w-[100px] h-[100px]">
                     {d.photos.slice(1).map((photo) => {
                       return (
-                        <img
-                          key={photo}
-                          src={photo}
-                       
-                          className="rounded-md"
-                        />
+                        <img key={photo} src={photo} className="rounded-md" />
                       );
                     })}
                   </div>
 
-                <div>
-                    copy
-                </div>
-
+                  <div className="flex justify-end">
+                    <button
+                      className="px-4 py-2 bg-blue-400  text-white font-semibold rounded-lg shadow-md transition-all"
+                      onClick={() => copyToClipboard(d.url)}
+                    >
+                      📋
+                    </button>
+                  </div>
                 </div>
               </div>
             );
